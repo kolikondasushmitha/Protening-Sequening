@@ -36,7 +36,7 @@ def testDnaToRna():
 
 def testMakeCodonDictionary():
     print("Testing makeCodonDictionary()...", end="")
-    d = makeCodonDictionary("data/codon_table.json")
+    d = makeCodonDictionary("Protening-Sequening/hw6-protein-starter/data/codon_table.json")
     assert(d["AAA"] == "Lys")
     assert(d["GGA"] == "Gly")
     assert(d["AUG"] == "Met")

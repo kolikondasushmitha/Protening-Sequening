@@ -54,9 +54,16 @@ Returns: dict mapping strs to strs
 '''
 def makeCodonDictionary(filename):
     import json
-    with open(filename, 'r') as file:
-        codon_dict = json.load(file)
-    return codon_dict
+    file=open(filename,"r")        # opening the file 
+    json_file=json.load(file)      # loading the json file json.load() , here json file is a Dictionary.
+    codon_to_aminoacid={}          # dictionary to store codons as keys and amino acids as values. 
+    for amino_acid in json_file:
+        for codon in json_file[amino_acid]:
+            codon=codon.replace("T","U")    # replacing T with U.
+            if codon not in codon_to_aminoacid: # if codon not in dictionary, we add codon as key and amino acid a value.
+                codon_to_aminoacid[codon]=amino_acid 
+
+    return codon_to_aminoacid
 
 
 '''
