@@ -45,7 +45,7 @@ def testMakeCodonDictionary():
 
 def testGenerateProtein():
     print("Testing generateProtein()...", end="")
-    codonD = makeCodonDictionary("data/codon_table.json")
+    codonD = makeCodonDictionary("Protening-Sequening/hw6-protein-starter/data/codon_table.json")
     rna = ["AUG", "GAU", "GGA", "CUC", "UAA"]
     assert(generateProtein(rna, codonD) == ["Start", "Asp", "Gly", "Leu", "Stop"])
     rna = ["AUG", "CCC", "UUU", "UAG"]
@@ -60,14 +60,14 @@ def testGenerateProtein():
 def testSynthesizeProteins():
     print("Testing synthesizeProteins()...", end="")
     # First, test on the provided test data
-    proteins1 = synthesizeProteins("data/test_dna.txt", "data/codon_table.json")
+    proteins1 = synthesizeProteins("Protening-Sequening/hw6-protein-starter/data/test_dna.txt", "Protening-Sequening/hw6-protein-starter/data/codon_table.json")
     # The function should say there are 31 total bases,
     # 4 unused bases, and 2 synthesized proteins
     assert(proteins1 == [ ['Start', 'Asp', 'Gly', 'Leu', 'Stop'], 
                           ['Start', 'Pro', 'Phe', 'Stop']])
 
     # Now test on the actual data
-    proteins2 = synthesizeProteins("data/human_p53.txt", "data/codon_table.json")
+    proteins2 = synthesizeProteins("Protening-Sequening/hw6-protein-starter/data/human_p53.txt", "Protening-Sequening/hw6-protein-starter/data/codon_table.json")
     # The function should say there are 19149 total bases,
     # 10560 unused bases, and 119 synthesized proteins
     assert(len(proteins2) == 119)
