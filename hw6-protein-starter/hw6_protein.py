@@ -30,12 +30,20 @@ Parameters: str ; int
 Returns: list of strs
 '''
 def dnaToRna(dna, startIndex):
-    rna = []
-    for i in range(startIndex, len(dna), 3):
-        codon = dna[i:i+3]
-        if len(codon) == 3:
-            rna.append(codon.replace('T', 'U'))
-    return rna
+    dna=dna.replace("T","U")        # we are replacing every "T" in dna with "U" , inorder to convert it into rna.
+    rna=[]
+    rna_codons = []                 # list to store rna codons.
+
+    for i in range(startIndex,len(dna),3):
+        rna.append(dna[i:i+3])      # creating rna list by adding strings of size 3.
+    for  rna_String in rna:
+        if rna_String in ["UAA","UAG","UGA"]: # if rna_string is a end codon , we append
+            rna_codons.append(rna_String)
+            break                   # once we find a end codon , we break the loop.
+        else:
+            rna_codons.append(rna_String)
+
+    return rna_codons
 
 
 '''
@@ -88,9 +96,9 @@ def synthesizeProteins(dnaFilename, codonFilename):
 
 def runWeek1():
     print("Human DNA")
-    humanProteins = synthesizeProteins("Protening-Sequening/hw6-protein-starter/data/human_p53.txt", "data/codon_table.json")
+    humanProteins = synthesizeProteins("data/human_p53.txt", "data/codon_table.json")
     print("Elephant DNA")
-    elephantProteins = synthesizeProteins("Protening-Sequening/hw6-protein-starter/data/elephant_p53.txt", "data/codon_table.json")
+    elephantProteins = synthesizeProteins("data/elephant_p53.txt", "data/codon_table.json")
 
 
 ### WEEK 2 ###
