@@ -5,11 +5,11 @@ from hw6_protein import *
 def testReadFile():
     print("Testing readFile()...", end="")
     # Check that the function works on the provided test file
-    text1 = readFile("data/test_dna.txt")
+    text1 = readFile("Protening-Sequening/hw6-protein-starter/data/test_dna.txt")
     assert(text1 == "ATGGATGGACTCTAACGCAATGCCCTTTTAG")
 
     # Now check the human DNA file you loaded
-    text2 = readFile("data/human_p53.txt")
+    text2 = readFile("Protening-Sequening/hw6-protein-starter/data/human_p53.txt")
     assert(text2[:10] == "GATGGGATTG") # the whole sequence is too long to check here!
     assert(len(text2) == 19149)
     # If the length is not correct, check that you're

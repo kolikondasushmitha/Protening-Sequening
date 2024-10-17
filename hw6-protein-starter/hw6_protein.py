@@ -18,6 +18,7 @@ Returns: str
 '''
 def readFile(filename):
     with open(filename, 'r') as file:
+        #removing the new lines from the text
         data = file.read().replace('\n', '')
     return data
 
@@ -29,7 +30,12 @@ Parameters: str ; int
 Returns: list of strs
 '''
 def dnaToRna(dna, startIndex):
-    return
+    rna = []
+    for i in range(startIndex, len(dna), 3):
+        codon = dna[i:i+3]
+        if len(codon) == 3:
+            rna.append(codon.replace('T', 'U'))
+    return rna
 
 
 '''
@@ -40,7 +46,9 @@ Returns: dict mapping strs to strs
 '''
 def makeCodonDictionary(filename):
     import json
-    return
+    with open(filename, 'r') as file:
+        codon_dict = json.load(file)
+    return codon_dict
 
 
 '''
@@ -50,7 +58,13 @@ Parameters: list of strs ; dict mapping strs to strs
 Returns: list of strs
 '''
 def generateProtein(codons, codonD):
-    return
+    protein = []
+    for codon in codons:
+        amino_acid = codonD.get(codon, "Stop")
+        if amino_acid == "Stop":
+            break
+        protein.append(amino_acid)
+    return protein
 
 
 '''
@@ -60,14 +74,23 @@ Parameters: str ; str
 Returns: 2D list of strs
 '''
 def synthesizeProteins(dnaFilename, codonFilename):
-    return
+    dna_sequence = readFile(dnaFilename)
+    codon_dict = makeCodonDictionary(codonFilename)
+    proteins = []
+    start = dna_sequence.find("ATG")
+    while start != -1:
+        rna = dnaToRna(dna_sequence, start)
+        protein = generateProtein(rna, codon_dict)
+        proteins.append(protein)
+        start = dna_sequence.find("ATG", start + 3)
+    return proteins
 
 
 def runWeek1():
     print("Human DNA")
-    humanProteins = synthesizeProteins("data/human_p53.txt", "data/codon_table.json")
+    humanProteins = synthesizeProteins("Protening-Sequening/hw6-protein-starter/data/human_p53.txt", "data/codon_table.json")
     print("Elephant DNA")
-    elephantProteins = synthesizeProteins("data/elephant_p53.txt", "data/codon_table.json")
+    elephantProteins = synthesizeProteins("Protening-Sequening/hw6-protein-starter/data/elephant_p53.txt", "data/codon_table.json")
 
 
 ### WEEK 2 ###
