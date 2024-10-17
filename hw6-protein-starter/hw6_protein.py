@@ -19,7 +19,6 @@ Returns: str
 def readFile(filename):
     with open(filename, 'r') as file:
         data = file.read().replace('\n', '')
-    
     return data
 
 
