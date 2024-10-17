@@ -274,8 +274,8 @@
 #     """
 """
 15-110 Hw6 - Protein Sequencing Project
-Name: D. DEERAJ KUMAR
-ROLL NUMBER: 2023501023
+Name: kolikonda Sushmitha
+ROLL NUMBER: 2023501078
 """
 
 import hw6_protein_tests as test
