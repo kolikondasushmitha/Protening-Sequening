@@ -231,7 +231,7 @@ def displayTextResults(commonalities, differences):
                 l.append(j)
     for i in l:
         print(i,end=" ")
-    
+    print()
     print("============================================================================================")
     print("The Amino Acids which occured at most Differently rates in both DNA Sequences are: ")
     for list in differences:
@@ -242,7 +242,7 @@ def displayTextResults(commonalities, differences):
 
 def runWeek2():
     humanProteins = synthesizeProteins("Protening-Sequening/hw6-protein-starter/data/human_p53.txt", "Protening-Sequening/hw6-protein-starter/data/codon_table.json")
-    elephantProteins = synthesizeProteins("data/elephant_p53.txt", "Protening-Sequening/hw6-protein-starter/data/codon_table.json")
+    elephantProteins = synthesizeProteins("Protening-Sequening/hw6-protein-starter/data/elephant_p53.txt", "Protening-Sequening/hw6-protein-starter/data/codon_table.json")
 
     commonalities = commonProteins(humanProteins, elephantProteins)
     differences = findAminoAcidDifferences(humanProteins, elephantProteins, 0.005)
