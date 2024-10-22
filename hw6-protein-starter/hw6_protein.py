@@ -1,6 +1,6 @@
 """
 15-110 Hw6 - Protein Sequencing Project
-Name: kolikonda Sushmitha
+Name: KOLIKONDA SUSHMITHA
 ROLL NUMBER: 2023501078
 """
 
